@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>时间进度小组件</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="widget" aria-label="时间进度小组件">
+        <header class="widget__header">
+            <div class="ctrls">
+                <button id="btn-primary" class="ctrls__dot ctrls__dot--swatch" title="主色"></button>
+                <button id="btn-bg" class="ctrls__dot ctrls__dot--swatch" title="背景色"></button>
+                <button id="btn-12w" class="ctrls__dot" title="设置12周起始日">
+                    🌸
+                </button>
+                <button id="btn-theme" class="ctrls__dot" title="切换主题" aria-pressed="false">🌛</button>
+            </div>
+            <div id="week-badge" class="week-badge" aria-live="polite">第1周</div>
+        </header>
+
+        <section class="clock" aria-live="polite" aria-label="当前时间">
+            <span id="clock">00:00:00</span>
+        </section>
+
+        
+
+        <section class="stats" aria-label="时间进度">
+            <div class="stat">
+                <span class="stat__label">今年</span>
+                <div class="bar" role="progressbar" aria-labelledby="label-year" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <div id="bar-year" class="bar__fill"></div>
+                </div>
+                <span id="pct-year" class="stat__pct">0%</span>
+                <span id="days-year" class="stat__days">0/365</span>
+            </div>
+            <div class="stat">
+                <span class="stat__label">12周</span>
+                <div class="bar" role="progressbar" aria-labelledby="label-12w" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <div id="bar-12w" class="bar__fill"></div>
+                </div>
+                <span id="pct-12w" class="stat__pct">0%</span>
+                <span id="weeks-12w" class="stat__days">0/12</span>
+            </div>
+            <div class="stat">
+                <span class="stat__label">本周</span>
+                <div class="bar" role="progressbar" aria-labelledby="label-week" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <div id="bar-week" class="bar__fill"></div>
+                </div>
+                <span id="pct-week" class="stat__pct">0%</span>
+                <span id="days-week" class="stat__days">0/7</span>
+            </div>
+        </section>
+
+        <footer class="quote" aria-label="每日引言">
+            <p id="quote-text">“决定不做什么”和“决定做什么”同样重要</p>
+        </footer>
+
+        <!-- Modal: 12-week start date picker -->
+        <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <div class="modal__card">
+                <h3 class="modal__title">设置 12 周起始日</h3>
+                <div id="calendar" class="cal"></div>
+                <div class="modal__actions">
+                    <button id="modal-cancel" class="btn btn--ghost" type="button">取消</button>
+                    <button id="modal-save" class="btn" type="button">确定</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal: pick primary color -->
+        <div id="modal-primary" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <div class="modal__card">
+                <h3 class="modal__title">选择主色</h3>
+                <div class="picker">
+                    <input id="picker-primary" class="picker__input" type="color" />
+                    <div class="picker__swatches" id="swatches-primary"></div>
+                </div>
+                <div class="modal__actions">
+                    <button class="btn btn--ghost" data-close="#modal-primary" type="button">取消</button>
+                    <button id="save-primary" class="btn" type="button">确定</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal: pick background color -->
+        <div id="modal-card" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <div class="modal__card">
+                <h3 class="modal__title">选择背景色</h3>
+                <div class="picker">
+                    <input id="picker-card" class="picker__input" type="color" />
+                    <div class="picker__swatches" id="swatches-card"></div>
+                </div>
+                <div class="modal__actions">
+                    <button class="btn btn--ghost" data-close="#modal-card" type="button">取消</button>
+                    <button id="save-card" class="btn" type="button">确定</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
