@@ -40,7 +40,7 @@ function preciseWeekProgress(now){
 
 const DEFAULT_QUOTES = [
     '用12周时间完成1年目标',
-    '成为自己人生的头号玩家'
+    '成为自己人生的头号玩家',
     '少即是多，慢即是快',
     '我想让世界为我惊叹',
     '你只活一次。使它有意义',
