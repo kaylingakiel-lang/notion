@@ -13,7 +13,7 @@
 
 /* Dark theme */
 :root[data-theme="dark"]{
-    --card-bg:#2C2C2C;
+    --card-bg:rgb(44, 44, 44);
     --bar-bg:#242429;
     --text-muted:#b5b8bf;
     --shadow:0 12px 40px rgba(0,0,0,.45);
@@ -36,7 +36,7 @@ body{
     max-width:100%;
     background:var(--card-bg);
     border-radius:24px;
-    padding:34px 40px 32px;
+    padding:clamp(16px, 4vw, 34px) clamp(16px, 5vw, 40px) clamp(14px, 3.5vw, 32px);
     box-shadow: var(--shadow);
 }
 
@@ -65,12 +65,12 @@ body{
     font-size:13px;
 }
 
-.clock{ text-align:center; margin:14px 0 22px }
+.clock{ text-align:center; margin:clamp(8px,2.2vw,14px) 0 clamp(12px,3vw,22px) }
 .clock span{
     font-weight:800;
     letter-spacing:2px;
     color:var(--text-strong);
-    font-size:92px;
+    font-size:clamp(42px, 12vw, 92px);
     line-height:1;
     text-shadow:0 4px 14px rgba(0,0,0,.08);
 }
@@ -79,12 +79,12 @@ body{
 .btn--ghost{background:transparent;color:var(--text-muted);border:1px solid var(--accent-100)}
 
 .stats{margin-top:6px}
-.stat{display:flex;align-items:center;gap:14px;margin:16px 0}
-.stat__label{width:48px;font-weight:600;color:#666}
-.stat__pct{width:68px;text-align:right;color:var(--accent-500);font-weight:700}
-.stat__days{width:70px;text-align:right;color:var(--text-muted)}
+.stat{display:flex;align-items:center;gap:clamp(8px,2vw,14px);margin:clamp(10px,2.4vw,16px) 0}
+.stat__label{width:48px;font-weight:600;color:#666;font-size:clamp(12px,2.4vw,16px)}
+.stat__pct{width:68px;text-align:right;color:var(--accent-500);font-weight:700;font-size:clamp(12px,2.4vw,16px)}
+.stat__days{width:70px;text-align:right;color:var(--text-muted);font-size:clamp(12px,2.2vw,15px)}
 
-.bar{flex:1;height:14px;background:var(--bar-bg);border-radius:999px;overflow:hidden;position:relative}
+.bar{flex:1;height:clamp(10px,2vw,14px);background:var(--bar-bg);border-radius:999px;overflow:hidden;position:relative}
 .bar__fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent-400),var(--accent-500));border-radius:999px;transition:width .6s cubic-bezier(.2,.8,.2,1)}
 
 .quote{margin-top:18px;border-top:1px solid #e5e7eb;padding-top:16px;text-align:center}
