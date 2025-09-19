@@ -36,7 +36,7 @@ body{
     max-width:100%;
     background:var(--card-bg);
     border-radius:24px;
-    padding:clamp(16px, 4vw, 34px) clamp(16px, 5vw, 40px) clamp(14px, 3.5vw, 32px);
+    padding:clamp(16px, 4vw, 34px) clamp(12px, 4vw, 32px) clamp(14px, 3.5vw, 32px);
     box-shadow: var(--shadow);
 }
 
@@ -70,7 +70,7 @@ body{
     font-weight:800;
     letter-spacing:2px;
     color:var(--text-strong);
-    font-size:clamp(20px, 6.5vw, 60px);
+    font-size:clamp(16px, 6vw, 56px);
     line-height:1;
     text-shadow:0 4px 14px rgba(0,0,0,.08);
 }
