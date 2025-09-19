@@ -64,13 +64,14 @@ function setTheme(theme){
     // Re-apply per-theme saved colors
     const p = load(`primary:${theme}`, '#6b7280');
     applyPrimary(p);
-    const card = load(`card:${theme}`, theme==='dark' ? '#17171a' : '#ffffff');
-    applyCardBg(card);
+    // Canvas/page background per theme
+    const canvas = load(`canvas:${theme}`, theme==='dark' ? '#0f172a' : '#f3f4f6');
+    applyCanvasBg(canvas);
     // Update swatch button colors if present
     const btnPrimary = document.getElementById('btn-primary');
-    const btnCard = document.getElementById('btn-card');
+    const btnCard = document.getElementById('btn-bg');
     if (btnPrimary) btnPrimary.style.background = p;
-    if (btnCard) btnCard.style.background = card;
+    if (btnCard) btnCard.style.background = canvas;
 }
 
 function applyPrimary(color){
@@ -193,18 +194,20 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     // Card background per-theme via modal
-    const defaultCard = load('theme','light')==='dark' ? '#0f172a' : '#f3f4f6';
-    const cardColor = load(`canvas:${theme}`, defaultCard);
-    applyCanvasBg(cardColor); setSwatchBtn(btnCard, cardColor);
+    const defaultCanvas = (document.documentElement.getAttribute('data-theme')||'light')==='dark' ? '#0f172a' : '#f3f4f6';
+    const canvasColor = load(`canvas:${theme}`, defaultCanvas);
+    applyCanvasBg(canvasColor); setSwatchBtn(btnCard, canvasColor);
     document.getElementById('btn-bg').addEventListener('click', () => {
         const modal = document.getElementById('modal-card');
         const input = document.getElementById('picker-card');
-        input.value = load(`canvas:${document.documentElement.getAttribute('data-theme')||'light'}`, cardColor);
+        input.value = load(`canvas:${document.documentElement.getAttribute('data-theme')||'light'}`, canvasColor);
         buildSwatches('card');
         modal.setAttribute('aria-hidden','false');
     });
     document.getElementById('save-card').addEventListener('click', () => {
         const color = document.getElementById('picker-card').value;
+        const themeNow = document.documentElement.getAttribute('data-theme')||'light';
+        save(`canvas:${themeNow}`, color);
         applyCanvasBg(color); setSwatchBtn(btnCard, color);
         document.getElementById('modal-card').setAttribute('aria-hidden','true');
     });
